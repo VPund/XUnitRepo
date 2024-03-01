@@ -23,6 +23,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore "./XUnitApp/XUnitApp/XUnitApp.csproj"
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build "./XUnitApp/XUnitApp/XUnitApp.csproj" --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
