@@ -9,7 +9,7 @@ workflow_call:
 
 jobs:
   build:
-  
+   triage:
     runs-on: ubuntu-latest
 
     steps:
