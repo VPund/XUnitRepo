@@ -4,12 +4,9 @@
 name: .Net Build
 
 on:
-#  push:
-#    branches: [ "main" ]
-#  pull_request:
-#    branches: [ "main" ]
-
-workflow_dispatch:
+  pull_request:
+    branches:
+      - main
 
 jobs:
 
@@ -19,7 +16,7 @@ jobs:
     #runs-on: ubuntu-latest
 
     #steps:
-      
+      call-workflow:
       uses: VPund/XUnitRepo/.github/workflows/Called.yml@main
       with:
         dotnet-version: ${{ inputs.dotnet-version }}
