@@ -16,7 +16,8 @@ jobs:
    job1:
    call-workflow:
     uses: ./XUnitRepo/.github/workflows/Called.yml
-
+    with:
+        dotnet-version: ${{ vars.JOB_NAME }}
    job2:
    
    build:
@@ -27,9 +28,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: Setup .NET
   
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: ${{ vars.JOB_NAME }}
+      #uses: actions/setup-dotnet@v3
+      #with:
+      #  dotnet-version: ${{ vars.JOB_NAME }}
     - name: Restore dependencies
       run: dotnet restore "./XUnitApp/XUnitApp/XUnitApp.csproj"
     - name: Build
