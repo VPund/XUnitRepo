@@ -22,7 +22,7 @@ jobs:
       
       uses: VPund/XUnitRepo/.github/workflows/Called.yml@main
       with:
-        dotnet-version: ${{ vars.JOB_NAME }}
+        dotnet-version: ${{ inputs.dotnet-version }}
 
     # - uses: actions/checkout@v3
     #- name: Setup .NET
