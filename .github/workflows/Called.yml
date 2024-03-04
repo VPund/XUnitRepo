@@ -1,0 +1,26 @@
+name: reusable workflow
+on:
+workflow_call:
+    inputs:
+      dotnet-version : 
+        required: true
+        type: string
+        
+
+jobs:
+  build:
+  
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/labeler@v4
+    #- name: Setup .NET
+    #  uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ vars.JOB_NAME }}
+    #- name: Restore dependencies
+    #  run: dotnet restore "./XUnitApp/XUnitApp/XUnitApp.csproj"
+    #- name: Build
+    #  run: dotnet build "./XUnitApp/XUnitApp/XUnitApp.csproj" --no-restore
+    #- name: Test
+    #  run: dotnet test "./XUnitApp/XUnitAppTest/XUnitAppTest.csproj" --no-build --verbosity normal

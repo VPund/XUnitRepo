@@ -9,6 +9,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+    jobs:
+    call-workflow:
+    uses: .github/workflows/Called.yml
+
 jobs:
   build:
 
@@ -17,9 +21,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: ${{ vars.JOB_NAME }}
+  
+      #uses: actions/setup-dotnet@v3
+      #with:
+      #  dotnet-version: ${{ vars.JOB_NAME }}
     - name: Restore dependencies
       run: dotnet restore "./XUnitApp/XUnitApp/XUnitApp.csproj"
     - name: Build
