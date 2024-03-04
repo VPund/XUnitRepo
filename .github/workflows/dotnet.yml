@@ -12,7 +12,6 @@ on:
 jobs:
 
   job:
-     
        uses: VPund/XUnitRepo/.github/workflows/Called.yml@main
        output:
        with:
@@ -28,7 +27,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: ${{ build.dotnet-version }}
+        dotnet-version: ${{ build.output.dotnet-version }}
     - name: Restore dependencies
       run: dotnet restore "./XUnitApp/XUnitApp/XUnitApp.csproj"
     - name: Build
