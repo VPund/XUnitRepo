@@ -9,11 +9,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-    JOB_NAME 
 
-jobs:
-  build: 
+
+build: 
      
        uses: VPund/XUnitRepo/.github/workflows/Called.yml@main
        output:
@@ -22,7 +20,7 @@ jobs:
        
          
 
-  job1:
+job1:
     runs-on: ubuntu-latest
     needs: build
     steps:
