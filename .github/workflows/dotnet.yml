@@ -9,16 +9,20 @@ on:
   pull_request:
     branches: [ "main" ]
 
-    jobs:
-    call-workflow:
-    uses: .github/workflows/Called.yml
+   
+    
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
+    call-workflow:
+    - uses: .github/workflows/Called.yml
+
     steps:
+      
+
     - uses: actions/checkout@v3
     - name: Setup .NET
   
