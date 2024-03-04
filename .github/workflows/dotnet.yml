@@ -13,27 +13,26 @@ on:
 
 jobs:
 
-   job1:
-   call-workflow:
-    uses: ./XUnitRepo/.github/workflows/Called.yml
-    with:
-        dotnet-version: 6.0.x
-   job2:
-   
+ 
    build:
 
-    runs-on: ubuntu-latest
-    needs: job1 
-    steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
+    #runs-on: ubuntu-latest
+
+    #steps:
+
+      uses: ./XUnitRepo/.github/workflows/Called.yml@main
+      with:
+        dotnet-version: 6.0.x
+
+    # - uses: actions/checkout@v3
+    #- name: Setup .NET
   
-      #uses: actions/setup-dotnet@v3
-      #with:
-      #  dotnet-version: ${{ vars.JOB_NAME }}
-    - name: Restore dependencies
-      run: dotnet restore "./XUnitApp/XUnitApp/XUnitApp.csproj"
-    - name: Build
-      run: dotnet build "./XUnitApp/XUnitApp/XUnitApp.csproj" --no-restore
-    - name: Test
-      run: dotnet test "./XUnitApp/XUnitAppTest/XUnitAppTest.csproj" --no-build --verbosity normal
+    #  #uses: actions/setup-dotnet@v3
+    #  #with:
+    #  #  dotnet-version: ${{ vars.JOB_NAME }}
+    #- name: Restore dependencies
+    #  run: dotnet restore "./XUnitApp/XUnitApp/XUnitApp.csproj"
+    #- name: Build
+    #  run: dotnet build "./XUnitApp/XUnitApp/XUnitApp.csproj" --no-restore
+    #- name: Test
+    #  run: dotnet test "./XUnitApp/XUnitAppTest/XUnitAppTest.csproj" --no-build --verbosity normal
