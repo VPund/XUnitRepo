@@ -20,7 +20,7 @@ jobs:
 
     #steps:
       
-      uses: XUnitRepo/.github/workflows/Called.yml@main
+      uses: VPund/XUnitRepo/.github/workflows/Called.yml@main
       with:
         dotnet-version: ${{ vars.JOB_NAME }}
 
