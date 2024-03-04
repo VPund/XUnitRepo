@@ -9,24 +9,31 @@ on:
   pull_request:
     branches: [ "main" ]
 
-jobs:
-  build:
-    
-    runs-on: ubuntu-latest
+env:
+    JOB_NAME 
 
-    call-another-reusable:
-      uses: VPund/XUnitRepo/.github/workflows/Called.yml@main
-      #uses: actions/setup-dotnet@v3
-      with:
-      dotnet-version: ${{ vars.JOB_NAME }}
-   # steps:
-     # uses: actions/checkout@v3
-     # name: Setup .NET
-  
+jobs:
+  build: 
      
-     #name: Restore dependencies
-     #run: dotnet restore "./XUnitApp/XUnitApp/XUnitApp.csproj"
-     #name: Build
-     #run: dotnet build "./XUnitApp/XUnitApp/XUnitApp.csproj" --no-restore
-     #name: Test
-     #run: dotnet test "./XUnitApp/XUnitAppTest/XUnitAppTest.csproj" --no-build --verbosity normal
+       uses: VPund/XUnitRepo/.github/workflows/Called.yml@main
+       output:
+       with:
+        dotnet-version: ${{ vars.JOB_NAME }}
+       
+         
+
+  job1:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ build.dotnet-version }}
+    - name: Restore dependencies
+      run: dotnet restore "./XUnitApp/XUnitApp/XUnitApp.csproj"
+    - name: Build
+      run: dotnet build "./XUnitApp/XUnitApp/XUnitApp.csproj" --no-restore
+    - name: Test
+      run: dotnet test "./XUnitApp/XUnitAppTest/XUnitAppTest.csproj" --no-build --verbosity normal
