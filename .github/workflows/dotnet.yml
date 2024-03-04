@@ -12,7 +12,7 @@ on:
 jobs:
 
   job1:
-       uses: VPund/XUnitRepo/.github/workflows/Called.yml@main
+       uses: VPund/XUnitRepo/.github/workflows/reusable.yml@main
        with:
         dotnet-version: ${{ vars.JOB_NAME }}
        
