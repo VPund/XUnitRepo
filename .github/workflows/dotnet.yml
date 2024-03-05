@@ -1,5 +1,8 @@
-# This workflow will build a .NET project
+#
+# Build pipeline for Xunit .net project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+# Owner : Vandana Pund
+# Date  : 2024-03-04
 
 name: .Net Buil
 
@@ -26,10 +29,10 @@ jobs:
     #- name: Setup .NET
     #  uses: actions/setup-dotnet@v3
     #  with:
-    #    dotnet-version: ${{ job1.dotnet-version }}
+    #    dotnet-version: ${{ vars.dotnetVersion }}
     - name: Restore dependencies
       run: dotnet restore "./XUnitApp/XUnitApp/XUnitApp.csproj"
     - name: Build
       run: dotnet build "./XUnitApp/XUnitApp/XUnitApp.csproj" --no-restore
     - name: Test
-      run: dotnet test "./XUnitApp/XUnitAppTest/XUnitAppTest.csproj" --no-build --verbosity normal
+      run: dotnet test "./XUnitApp/XUnitAppTest/XUnitAppTest.csproj" --no-build
